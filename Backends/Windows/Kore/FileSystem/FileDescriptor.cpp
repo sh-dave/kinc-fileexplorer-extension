@@ -8,8 +8,9 @@
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/bb776913(v=vs.85).aspx
 namespace Kore { namespace FileSystem {
 
-void FileDescriptor::browseForOpen( const wchar_t * title, std::function<void (const wchar_t *)> then ) {
-	wchar_t path[MAX_PATH] = L"";
+//void FileDescriptor::browseForOpen( const wchar_t * title, void *(*then)(const wchar_t *)) {
+const wchar_t * FileDescriptor::browseForOpen( const wchar_t * title ) {
+	static wchar_t path[MAX_PATH] = L"";
 	OPENFILENAME ofn;
 	ZeroMemory(&ofn, sizeof(OPENFILENAME));
 	ofn.lStructSize = sizeof(OPENFILENAME);
@@ -20,17 +21,21 @@ void FileDescriptor::browseForOpen( const wchar_t * title, std::function<void (c
 	ofn.nMaxFile = MAX_PATH;
 
 	if (::GetOpenFileName(&ofn)) {
-		then(path);
+		//then(path);
+		return path;
 	} else {
 		DWORD err = GetLastError();
 		Kore::log(Error, "last error: %i", err);
 	}
+
+	return nullptr;
 }
 
-void FileDescriptor::browseForSave( const wchar_t * title, std::function<void (const wchar_t *)> then ) {
+const wchar_t * FileDescriptor::browseForSave( const wchar_t * title/*, void *(*then)(const wchar_t *)*/ ) {
 //	if (::GetSaveFileName(&ofn)) {
 //		then(path);
 //	}
+	return nullptr;
 }
 
 }}
