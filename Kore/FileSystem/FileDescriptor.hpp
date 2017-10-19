@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Kore/pch.h>
 #include <functional>
 
 namespace Kore { namespace FileSystem {
