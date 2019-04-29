@@ -1,1 +1,1 @@
-# kore-fileexplorer-extension
+# kinc-fileexplorer-extension
