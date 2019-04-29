@@ -1,4 +1,4 @@
-#include <Kore/FileSystem/FileDescriptor.hpp>
+#include <Kore/FileExplorer/FileDescriptor.hpp>
 
 #include <Kore/Log.h>
 
@@ -6,10 +6,11 @@
 
 // TODO (DK) implement via common dialog items?
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/bb776913(v=vs.85).aspx
-namespace Kore { namespace FileSystem {
+namespace Kore { namespace FileExplorer {
 
 //void FileDescriptor::browseForOpen( const wchar_t * title, void *(*then)(const wchar_t *)) {
-const wchar_t * FileDescriptor::browseForOpen( const wchar_t * title ) {
+const wchar_t *
+FileDescriptor::browseForOpen( const wchar_t * title ) {
 	static wchar_t path[MAX_PATH] = L"";
 	OPENFILENAME ofn;
 	ZeroMemory(&ofn, sizeof(OPENFILENAME));
@@ -31,7 +32,8 @@ const wchar_t * FileDescriptor::browseForOpen( const wchar_t * title ) {
 	return nullptr;
 }
 
-const wchar_t * FileDescriptor::browseForSave( const wchar_t * title/*, void *(*then)(const wchar_t *)*/ ) {
+const wchar_t *
+FileDescriptor::browseForSave( const wchar_t * title/*, void *(*then)(const wchar_t *)*/ ) {
 //	if (::GetSaveFileName(&ofn)) {
 //		then(path);
 //	}

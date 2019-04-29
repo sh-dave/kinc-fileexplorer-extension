@@ -1,1 +1,1 @@
-# kore-filesystem-extension
+# kore-fileexplorer-extension
